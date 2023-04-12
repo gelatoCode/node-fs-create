@@ -1,11 +1,16 @@
 # Node.js with Fila System and JSON.
-TODO : Add data to **JSON** file and view a data in ejs with use File System.
-Purpose: Free! Anime about name, movie, and year.
+**TODO**
 
-## JSON
+- [x] Read a data using file system `fs.readFile()`.
+- [ ] Create a data using file system `fs.writeFile()`.
 
-1. Create a new file JSON called **free.json**
-2. In side file, add a data.
+#
+## JSON File 
+For data using a JSON File.
+
+1. Create a json file called _free.json_.
+2. Add a data using a array.
+
    ```json
    [
         {
@@ -13,80 +18,67 @@ Purpose: Free! Anime about name, movie, and year.
             "media" : "Anime",
             "year" : 2014
         }
-    ]
-    ```
-#
-
-## File System Read a data
-
-:no_entry: **app.js**
-
-1. Load a file system module.
-   
-   ```js
-   const fs = require('fs')
+   ]
    ```
-2. In side app.js, add `app.get()` method.
+#
+## File System Read a JSON File
+Read a JSON Files using `fs.readFile()`.
+
+1. Load a fs(file-system) module.
+ 
    ```js
-   app.get('/read' , (req, res) => {
+   const fs = require('fs');
+   ```
+3. Add a `app.get()` method.
+   ```js
+   app.get('/' , (req, res) => {
 
    })
    ```
-   :warning: `/read` become path of url read a data.
-
-3. Add file system read code inside `app.get()`.
+3. To read the file _**free.json**_ using `fs.readFile()` to read a content.
     ```js
-    fs.readFile('./free.json', 'utf-8' , (err, data) => {
-        if (err) throw err;
+    fs.readFile('./free.json' , 'utf-8' , (err, data) => {
+        if(err) throw err;
 
         console.log(data);
     })
-    res.send('done');
     ```
-4. Run a program `npm start`. Run in browser **localhost:8080**. Output in terminal.
-   ```console
-   [
-        {
-            "name" : "Free!",
-            "media" : "Anime",
-            "year" : 2014
-        }
-    ]
-   ```
-5. Right now, create a file ejs to display data in browser.
-6. Add this code.
+    :warning: Run a program `npm start`.
+
+    :no_entry: Output in terminal.
+    ```console
+    ```
+
+    
+4. Declare a variable and parses data into an object.
    ```js
-    fs.readFile('./free.json', 'utf-8' , (err, data) => {
-        if (err) throw err;
-
-        const read = JSON.parse(data);
-
-        res.render('index', {data : read});
-    })
+   const read = JSON.parse(data);
+   ```
+5. Add `res.render()` function to render a web page with the data on it.
+    ```js
+    res.render('index' , {data : read});
     ```
-    :warning: Delete a `res.send()` and `console.log('done')`.
-
-    :warning: Declare a `read` to be `JSON.parse(data)`. Add `res.render('index', {data : read});` to send a data in browser.
-7. In **index.ejs**, use **for loop** to make a **table** tag automatic add data.
-   ```html 
+6. Go to _index.ejs_, create a table with 3 columns.
+    ```html
     <table>
         <tr>
             <th>Name</th>
             <th>Media</th>
             <th>Year</th>
         </tr>
-        <% for(var i=0; i < data.length; i++) { %>
+    </table>
+    ```
+7. To view a data will using ejs template. Create a **for loop** that iterate through the **data** array with create a table with 3 columns.
+   ```html
+    <% for(var i=0; i < data.length; i++) { %>
             <tr>
                 <td><%= data[i].name %></td>
                 <td><%= data[i].media %></td>
                 <td><%= data[i].year %></td>
             </tr>
-        <% } %>
-    </table>
+    <% } %>
     ```
-8. Done. Run a app, `npm start`. Run into **localhost:8080**
+    :warning: 3 columns same with property of JSON file.
+8. Run a app `npm start`. Run to browser **localhost:8080**.
 
-
-
-
-
+#
