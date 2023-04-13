@@ -1,7 +1,1 @@
-[
-    {
-        "name" : "Free!",
-        "media" : "Anime",
-        "year" : 2014
-    }
-]
+[{"name":"Free!","media":"Anime","year":2014},{"name":"Free!","media":"anime","year":"2016"}]
