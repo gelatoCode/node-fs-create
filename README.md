@@ -164,3 +164,4 @@ Add a data to JSON File.
         <input type="submit">
     </form>
     ```
+12. Run a app `npm start` . Run to browser **localhost:8080**.
