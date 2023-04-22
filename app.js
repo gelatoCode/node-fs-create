@@ -26,12 +26,15 @@ app.post('/view' , (req, res) => {
         const read = JSON.parse(data);
         console.log('Step ongoing.....');
 
-        const {name, media , year} = req.body;
+        const {name, char, swim} = req.body;
+
+        const id = Math.floor(Math.random() * 10);
 
         const allData = {
+            id : id,
             name: name,
-            media : media,
-            year : year
+            char : char,
+            swim : swim
         }
 
         read.push(allData);

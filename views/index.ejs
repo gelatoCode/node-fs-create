@@ -9,22 +9,22 @@
 <body>
     <form action="/view" method="POST">
         Name : <input type="text" name="name"><br/> 
-        Media : <input type="text" name="media" placeholder="anime @ movie"> <br/>
-        Year : <input type="text" name="year"> <br />
+        Role : <input type="text" name="char" placeholder="anime @ movie"> <br/>
+        Swim Style : <input type="text" name="swim"><br>
         <input type="submit">
     </form>
     <h2>Display a data</h2>
     <table>
         <tr>
             <th>Name</th>
-            <th>Media</th>
-            <th>Year</th>
+            <th>Role</th>
+            <th>Swim Style</th>
         </tr>
         <% for(var i=0; i < data.length; i++) { %>
             <tr>
                 <td><%= data[i].name %></td>
-                <td><%= data[i].media %></td>
-                <td><%= data[i].year %></td>
+                <td><%= data[i].char %></td>
+                <td><%= data[i].swim %></td>
             </tr>
         <% } %>
     </table>
